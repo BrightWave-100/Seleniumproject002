@@ -13,6 +13,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.DashboardPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -21,6 +22,7 @@ public class FirstSeleniumTest {
     WebDriver driver;
     WebDriverWait wait;
     LoginPage loginPage;
+    DashboardPage dashboardPage;
     String loginUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
 
     @BeforeClass
@@ -31,6 +33,7 @@ public class FirstSeleniumTest {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         loginPage = new LoginPage(driver);
+        dashboardPage = new DashboardPage(driver);
     }
 
     @AfterClass
@@ -116,21 +119,15 @@ public class FirstSeleniumTest {
         }
     }
 
+
     @Test
-    public void testLogout() throws InterruptedException{
+    public void testLogout() {
         openLoginPage();
-        loginPage.login("Admin","admin123");
+        loginPage.login("Admin", "admin123");
+        Assert.assertEquals(dashboardPage.getHeadingText(), "Dashboard",
+                "Dashboard should load before logout");
 
-
-        wait.until(ExpectedConditions.urlContains("/dashboard"));
-
-        WebElement userMenu = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector(".oxd-userdropdown-tab")));
-        userMenu.click();
-
-        WebElement logoutLink = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//a[normalize-space()='Logout']")));
-        logoutLink.click();
+        dashboardPage.logout();
 
         wait.until(ExpectedConditions.urlContains("/auth/login"));
         Assert.assertTrue(driver.getCurrentUrl().contains("/auth/login"),
