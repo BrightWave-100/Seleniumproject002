@@ -1,6 +1,7 @@
 package part2;
 
 import org.openqa.selenium.By;
+import org.testng.annotations.Listeners;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,7 @@ import pages.DashboardPage;
 
 import java.time.Duration;
 import java.util.List;
+@Listeners(ScreenshotListener.class)
 
 public class FirstSeleniumTest {
     WebDriver driver;
