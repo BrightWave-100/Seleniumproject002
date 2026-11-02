@@ -1,12 +1,10 @@
 # Seleniumproject002
-
+[![Selenium Tests](https://github.com/BrightWave-100/Seleniumproject002/actions/workflows/maven-tests.yml/badge.svg)](https://github.com/BrightWave-100/Seleniumproject002/actions/workflows/maven-tests.yml)
 Automated login and logout tests for the OrangeHRM demo site, built with Java, Selenium, and TestNG using the Page Object Model.
 
 ## Why this matters
 
 Login is the front door of most products, and when it breaks, users notice first. This suite automates the login and logout flows of the OrangeHRM demo site. It checks that valid users get in, that bad input is rejected with the right message, and that sessions end cleanly. One Maven command runs the whole suite, so these checks can run on every change instead of depending on someone clicking through the app by hand.
-
-## What this shows
 
 The Page Object Model keeps locators and page actions in one class per screen, so a UI change means one fix instead of edits across every test. TestNG handles test structure and execution, which keeps the test classes focused on behavior. Maven declares the dependencies in `pom.xml`, so the same build works on any machine with Java 21 and Chrome.
 
@@ -19,7 +17,7 @@ The Page Object Model keeps locators and page actions in one class per screen, s
 - Page Object Model (POM)
 - Git and GitHub
 
-## Prerequisites
+## Prerequisites![img.png](img.png)
 
 - Java 21
 - Maven
