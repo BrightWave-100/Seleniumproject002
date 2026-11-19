@@ -68,7 +68,7 @@ public class FirstSeleniumTest {
                 By.cssSelector(".oxd-alert-content-text")));
         String actualResult = error.getText();
         String expectedResult = "Invalid credentials";
-        Assert.assertEquals(actualResult, expectedResult,"user should not be logged into the application");
+        Assert.assertEquals(actualResult, expectedResult,"Invalid password should show the ‘Invalid credentials’ error");
     }
 
     @Test
